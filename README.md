@@ -4,7 +4,7 @@ This directory encompasses all those lab exercises which were done for eight wee
 ## Assignment
 This directory contains two sub-folders.
 ### Case Study
-The case study directory provides the solution to two case studies of the curriculum (iPremier and University of Virginia).
+The case study directory provides the solution to two case studies of the curriculum (Apple and Target).
 ### Penetration Testing
 In this directory, there is a single pdf document which is the report of a pen test performed on three websites that were permitted for testing by the university.
 
